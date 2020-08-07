@@ -1,0 +1,113 @@
+//named and default import/exports
+//only one default export module
+//think of module as file
+
+import React from "react";
+import BookList from "./mycomponent/BookList";
+const App = () => (
+  <div>
+    <h1>this is my Application</h1>
+    <BookList />
+  </div>
+);
+
+//import Wellcome from "./mycomponent/Wellcome";
+/*import { name, age, person } from "./mycomponent/data";
+
+
+const App = () => {
+  return (
+    <div>
+      <Banner />
+      <p>this is my content</p>
+      <p>{name}</p>
+      <p>{age}</p>
+      <p>{person.name}</p>
+      <p>{person.age}</p>
+      <hr />
+    </div>
+  );
+};*/
+//this is another category*/
+
+/***class base component*/
+
+/*class App extends Component {
+  render() {
+    return (
+      <div>
+        <Banner />
+        <p>this is my content</p>
+        <p>{name}</p>
+        <p>{age}</p>
+        <p>{person.name}</p>
+        <p>{person.age}</p>
+        <hr />
+      </div>
+    );
+  }
+}
+*/
+export default App;
+
+
+
+
+
+
+
+
+
+********************************BookList*********************************************
+import React, { Component } from "react";
+import Book from "./Book";
+export default class BookList extends Component {
+  state = {
+    books: [
+      {
+        id: 1,
+        book: "book number one",
+        author: "john milton",
+      },
+      {
+        id: 2,
+        book: "book number two",
+        author: "John lilley",
+      },
+      {
+        id: 3,
+        book: "book number three",
+        author: "Greene",
+      },
+    ],
+  };
+
+  render() {
+    //const books = this.state.books.map((list) => list.book);
+    // console.log(books);
+    return (
+      <section>
+        <h3>This is our Booklist</h3>
+        {this.state.books.map((item) => (
+          <Book key={item.id} info={item} />
+        ))}
+      </section>
+    );
+  }
+}
+
+***********************************Book********************************************
+import React, { Component } from "react";
+
+export default class Book extends Component {
+  render() {
+    //console.log(this.props);
+    const { book, author } = this.props.book;
+    return (
+      <div>
+        <h3>Book:{book}</h3>
+        <h3>Author:{author}</h3>
+      </div>
+    );
+  }
+}
